@@ -3,8 +3,6 @@ boardList = [["_","_","_"],["_","_","_"],["_","_","_"]]
 cpuLogicList = [[2, 0, 2], [0, 4, 0], [2, 0, 2]]
 inputStr = ""
 outputBoolean = False
-incrementVarX = 0
-incrementVarY = 0
 
 def resetTheBoard():
     for x in range(3):
@@ -71,10 +69,10 @@ def computerPlaceTile():
                 largestIndexX = i
                 largestIndexY = j
                 largestInt = cpuLogicList[i][j]
-    boardList[largestIndexX][largestIndexY] = "X"
     printTheBoard()
+    boardList[largestIndexX][largestIndexY] = "X"
     print("Computer placed their tile.")
-    print(cpuLogicList)
+    printTheBoard()
     if(checkAllValues("X", largestIndexX, largestIndexY)):
         print("The computer won!")
         playAgain()
@@ -280,10 +278,6 @@ def playAgain():
         print("\"" + yesNoStr + "\"" + " is not an accepted input. Please try again.")
         playAgain()
 
-
-#Rules Block
-print("Welcome to Tic-Tac-Toe!")
-
 #Asks the player if they would like the rules.
 def gameRules():
     yesNoStr = input("Would you like to see the rules? (yes/no)")
@@ -311,5 +305,6 @@ def gameRules():
         gameRules()
 
 #Start the game
+print("Welcome to Tic-Tac-Toe!")
 gameRules()
 askForPlayers()
