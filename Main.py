@@ -1,6 +1,6 @@
 #Declaring the variables:
 boardList = [["_","_","_"],["_","_","_"],["_","_","_"]]
-cpuLogicList = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+cpuLogicList = [[2, 0, 2], [0, 4, 0], [2, 0, 2]]
 inputStr = ""
 outputBoolean = False
 incrementVarX = 0
@@ -33,6 +33,7 @@ def playerPlaceTile():
             if (checkForFull()):
                 printTheBoard()
                 print("The game is a tie!")
+                playAgain()
             else:
                 computerPlaceTile()
 
@@ -52,8 +53,8 @@ def computerPlaceTile():
     largestIndexY = 0
     for x in boardList:
         for y in x:
-            if(checkAllValues("x", incrementVarX, incrementVarY)):
-                cpuLogicList[incrementVarX][incrementVarY] += 99
+            if(checkAllValues("X", incrementVarX, incrementVarY)):
+                cpuLogicList[incrementVarX][incrementVarY] +=99
             if(checkAllValues("O", incrementVarX, incrementVarY)):
                 cpuLogicList[incrementVarX][incrementVarY] +=66
             if (boardList[incrementVarX][incrementVarY] != "_"):
@@ -63,8 +64,8 @@ def computerPlaceTile():
         incrementVarX +=1
     incrementVarX = 0
 
-    for i in range(2):
-        for j in range(2):
+    for i in range(3):
+        for j in range(3):
             if(int(cpuLogicList[i][j]) >= int(largestInt)):
                 largestIndexX = i
                 largestIndexY = j
@@ -72,7 +73,6 @@ def computerPlaceTile():
     boardList[largestIndexX][largestIndexY] = "X"
     printTheBoard()
     print("Computer placed their tile.")
-    print(cpuLogicList)
     if(checkAllValues("X", largestIndexX, largestIndexY)):
         print("The computer won!")
         playAgain()
