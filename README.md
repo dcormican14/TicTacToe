@@ -1,1 +1,2 @@
 #TicTacToe
+This game is the game I made to test my coding skills in python, and this is the game that I submitted for my final project in CSCI 101. The program provides a text-based interface for tic-tac-toe as well as the option to play against the program logic that I have designed.
