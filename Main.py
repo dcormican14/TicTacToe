@@ -5,8 +5,14 @@ inputStr = ""
 outputBoolean = False
 incrementVarX = 0
 incrementVarY = 0
+
+def resetTheBoard():
+    for x in range(3):
+        for y in range(3):
+            boardList[x][y] = "_"
 #Beginning the game
 def askForPlayers():
+    resetTheBoard()
     selectionStr = input("How many Players will be playing? (One/Two)")
     if(selectionStr.lower() == "one"):
         printTheBoard()
@@ -74,6 +80,7 @@ def computerPlaceTile():
     boardList[largestIndexX][largestIndexY] = "X"
     printTheBoard()
     print("Computer placed their tile.")
+    print(cpuLogicList)
     if(checkAllValues("X", largestIndexX, largestIndexY)):
         print("The computer won!")
         playAgain()
