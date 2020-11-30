@@ -22,28 +22,29 @@ def askForPlayers():
 #Allows the player to place their tile and calls the computer method
 def playerPlaceTile():
     inputStr = input("Where would you like to move?")
-    #try:
-    if ((inputStr[0].lower() == "a" or inputStr[0].lower() == "b" or inputStr[0].lower() == "c") and boardList[int(inputStr[1]) - 1][ord(inputStr[0].lower()) - 97] == "_"):
-        boardList[int(inputStr[1]) - 1][ord(inputStr[0].lower()) - 97] = "O"
-        if (checkAllValues("O", int(inputStr[1]) - 1, ord(inputStr[0].lower()) - 97)):
-            printTheBoard()
-            print("You won!")
-            playAgain()
-        else:
-            if (checkForFull()):
+    try:
+        if ((inputStr[0].lower() == "a" or inputStr[0].lower() == "b" or inputStr[0].lower() == "c") and boardList[int(inputStr[1]) - 1][ord(inputStr[0].lower()) - 97] == "_"):
+            boardList[int(inputStr[1]) - 1][ord(inputStr[0].lower()) - 97] = "O"
+            if (checkAllValues("O", int(inputStr[1]) - 1, ord(inputStr[0].lower()) - 97)):
                 printTheBoard()
-                print("The game is a tie!")
+                print("You won!")
                 playAgain()
             else:
-                computerPlaceTile()
+                if (checkForFull()):
+                    printTheBoard()
+                    print("The game is a tie!")
+                    playAgain()
+                else:
+                    computerPlaceTile()
 
-    else:
+        else:
+            print("\"" + inputStr + "\"" + " is not an accepted input, please enter again.")
+            playerPlaceTile()
+    except:
         print("\"" + inputStr + "\"" + " is not an accepted input, please enter again.")
+        print("except")
         playerPlaceTile()
-    #except:
-        #print("\"" + inputStr + "\"" + " is not an accepted input, please enter again.")
-        #print("except")
-        #playerPlaceTile()
+
 #allows the computer to place its tile and calls the player method
 def computerPlaceTile():
     incrementVarX = 0
