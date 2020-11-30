@@ -53,23 +53,17 @@ def playerPlaceTile():
 
 #allows the computer to place its tile and calls the player method
 def computerPlaceTile():
-    incrementVarX = 0
-    incrementVarY = 0
     largestInt = 0
     largestIndexX = 0
     largestIndexY = 0
-    for x in boardList:
-        for y in x:
-            if(checkAllValues("X", incrementVarX, incrementVarY)):
-                cpuLogicList[incrementVarX][incrementVarY] +=99
-            if(checkAllValues("O", incrementVarX, incrementVarY)):
-                cpuLogicList[incrementVarX][incrementVarY] +=66
-            if (boardList[incrementVarX][incrementVarY] != "_"):
-                cpuLogicList[incrementVarX][incrementVarY] = -1
-            incrementVarY +=1
-        incrementVarY = 0
-        incrementVarX +=1
-    incrementVarX = 0
+    for i in range(3):
+        for j in range(3):
+            if(checkAllValues("X", i, j)):
+                cpuLogicList[i][j] +=99
+            if(checkAllValues("O", i, j)):
+                cpuLogicList[i][j] +=66
+            if (boardList[i][j] != "_"):
+                cpuLogicList[i][j] = -1
 
     for i in range(3):
         for j in range(3):
@@ -252,10 +246,10 @@ def checkAllValues(checkVar, row, col):
         if(checkDownRight(checkVar, row, col) and checkDownRight(checkVar, row+1, col+1)):
             return True
     if(row == 2 and col == 0):
-        if (checkDownLeft(checkVar, row, col) and checkDownLeft(checkVar, row + 1, col - 1)):
+        if (checkUpRight(checkVar, row, col) and checkUpRight(checkVar, row - 1, col + 1)):
             return True
     if (row == 0 and col == 2):
-        if (checkUpRight(checkVar, row, col) and checkUpRight(checkVar, row - 1, col + 1)):
+        if (checkDownLeft(checkVar, row, col) and checkDownLeft(checkVar, row + 1, col - 1)):
             return True
     if (row == 2 and col == 2):
         if (checkUpLeft(checkVar, row, col) and checkUpLeft(checkVar, row - 1, col - 1)):
