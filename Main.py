@@ -63,16 +63,12 @@ def computerPlaceTile():
         incrementVarX +=1
     incrementVarX = 0
 
-    for x in cpuLogicList:
-        for y in x:
-            if(y>largestInt):
-                largestIndexX = incrementVarX
-                largestIndexY = incrementVarY
-                largestInt = y
-            incrementVarY += 1
-        incrementVarY = 0
-        incrementVarX += 1
-    incrementVarX = 0
+    for i in range(2):
+        for j in range(2):
+            if(int(cpuLogicList[i][j]) >= int(largestInt)):
+                largestIndexX = i
+                largestIndexY = j
+                largestInt = cpuLogicList[i][j]
     boardList[largestIndexX][largestIndexY] = "X"
     printTheBoard()
     print("Computer placed their tile.")
@@ -307,8 +303,10 @@ def gameRules():
             print("Good luck!")
         else:
             print("\"" + yesNoStr + "\"" + " is not an accepted input")
+            gameRules()
     except:
         print("\"" + yesNoStr + "\"" + " is not an accepted input")
+        gameRules()
 
 #Start the game
 gameRules()
