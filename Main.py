@@ -97,6 +97,7 @@ def playerOnePlaceTile():
                 if(checkForFull()):
                     printTheBoard()
                     print("The game is a tie!")
+                    playAgain()
                 else:
                     printTheBoard()
                     playerTwoPlaceTile()
